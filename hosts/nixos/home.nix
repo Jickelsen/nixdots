@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
+  imports = [
+    ../../homeManagerModules
+  ];
+
   nixpkgs.config.allowUnfree = true;
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -16,12 +20,12 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
+  home.packages = with pkgs; [
+    telegram-desktop
+    # inputs.zen-browser.packages."${system}".default
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

@@ -2,19 +2,30 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-      ./main-user.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+    ./main-user.nix
+    ../common-packages.nix
+  ];
 
   main-user.enable = true;
   main-user.userName = "jickel";
   main-user.description = "Jacob M";
+
+  environment.sessionVariables = {
+    FLAKE = "/home/jickel/.config/nix";
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -23,7 +34,10 @@
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -49,7 +63,7 @@
     LC_TELEPHONE = "sv_SE.UTF-8";
     LC_TIME = "sv_SE.UTF-8";
   };
-  
+
   # From https://github.com/vimjoyer/nixos-gaming-video
   # enabling opengpl and GPU drivers
   hardware.graphics = {
@@ -58,7 +72,7 @@
   };
   # hardware.opengl has beed changed to hardware.graphics
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   # services.xserver.videoDrivers = ["amdgpu"];
   hardware.nvidia = {
     modesetting.enable = true;
@@ -66,40 +80,44 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-  hardware.nvidia.prime = {
-    offload = {
-      enable = true;
-      enableOffloadCmd = true;
-    };
+ hardware.nvidia.prime = {
+   offload = {
+     enable = true;
+     enableOffloadCmd = true;
+   };
 
-    # integrated
-    intelBusId = "PCI:0:2:0";
-    # amdgpuBusId = "PCI:6:0:0"
-    
-    # dedicated
-    nvidiaBusId = "PCI:1:0:0";
-  };
+   # integrated
+   intelBusId = "PCI:0:2:0";
+   # amdgpuBusId = "PCI:6:0:0"
 
-  specialisation = {
-    gaming-time.configuration = {
+   # dedicated
+   nvidiaBusId = "PCI:1:0:0";
+ };
 
-      hardware.nvidia = {
-        prime.sync.enable = lib.mkForce true;
-        prime.offload = {
-          enable = lib.mkForce false;
-          enableOffloadCmd = lib.mkForce false;
-        };
-      };
+ specialisation = {
+   gaming-time.configuration = {
 
-    };
-  };
+     hardware.nvidia = {
+       prime.sync.enable = lib.mkForce true;
+       prime.offload = {
+         enable = lib.mkForce false;
+         enableOffloadCmd = lib.mkForce false;
+       };
+     };
+
+   };
+ };
+
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  #services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
+  # Enable the KDE Plasma 6 Desktop Environment.
+  services.desktopManager.plasma6.enable = true;
+  services.xserver.displayManager.sddm.wayland.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -130,11 +148,11 @@
   # services.xserver.libinput.enable = true;
 
   # Install zsh
-  programs.zsh.enable = true;
+  #programs.zsh.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
-  
+
   # Steam etc
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
@@ -155,16 +173,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    git
-    vscode
-    zsh
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    nixpkgs-fmt
-    nixfmt-rfc-style
+    filelight
     mangohud
     xivlauncher
-    telegram-desktop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

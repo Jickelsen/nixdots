@@ -273,7 +273,6 @@
       "theora"
       "tig"
       "tio"
-      "tmux"
       "truncate"
       "unbound"
       "unixodbc"

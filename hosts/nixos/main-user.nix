@@ -28,8 +28,8 @@ in
       isNormalUser = true;
       initialPassword = "12345";
       description = cfg.description;
-      extraGroups = [ "networkmanager" "wheel" ];
-      shell = pkgs.zsh;
+      extraGroups = [ "networkmanager" "wheel" "uinput"];
+      #shell = pkgs.zsh;
       packages = with pkgs; [
 	#  thunderbird
       ];

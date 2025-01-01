@@ -13,9 +13,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, zen-browser }:
     let
     in
     {
@@ -38,6 +39,7 @@
         modules = [
           ./hosts/nixos/configuration.nix
           home-manager.nixosModules.default
+          ./modules
         ];
       };
     };

@@ -1,7 +1,10 @@
 { inputs, pkgs, config, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
+  imports =
+    [
+      ../common-packages.nix
+    ];
 
   services.nix-daemon.enable = true;
   # Necessary for using flakes on this system.
@@ -29,11 +32,6 @@
   programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
-    neofetch
-    sshpass
-    nixpkgs-fmt
-    neovim
-    alacritty
     mkalias
   ];
 
