@@ -80,44 +80,55 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
- hardware.nvidia.prime = {
-   offload = {
-     enable = true;
-     enableOffloadCmd = true;
-   };
+  hardware.nvidia.prime = {
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
 
-   # integrated
-   intelBusId = "PCI:0:2:0";
-   # amdgpuBusId = "PCI:6:0:0"
+    # integrated
+    intelBusId = "PCI:0:2:0";
+    # amdgpuBusId = "PCI:6:0:0"
 
-   # dedicated
-   nvidiaBusId = "PCI:1:0:0";
- };
+    # dedicated
+    nvidiaBusId = "PCI:1:0:0";
+  };
 
- specialisation = {
-   gaming-time.configuration = {
+  specialisation = {
+    gaming-time.configuration = {
 
-     hardware.nvidia = {
-       prime.sync.enable = lib.mkForce true;
-       prime.offload = {
-         enable = lib.mkForce false;
-         enableOffloadCmd = lib.mkForce false;
-       };
-     };
+      hardware.nvidia = {
+        prime.sync.enable = lib.mkForce true;
+        prime.offload = {
+          enable = lib.mkForce false;
+          enableOffloadCmd = lib.mkForce false;
+        };
+      };
 
-   };
- };
+    };
 
+    no-gpu.configuration = {
+
+      hardware.nvidia = {
+        prime.sync.enable = lib.mkForce false;
+        prime.offload = {
+          enable = lib.mkForce false;
+          enableOffloadCmd = lib.mkForce false;
+        };
+      };
+
+    };
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  #services.xserver.displayManager.gdm.enable = true;
+  #services.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
   # Enable the KDE Plasma 6 Desktop Environment.
   services.desktopManager.plasma6.enable = true;
-  services.xserver.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -127,6 +138,9 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -145,6 +159,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
+  
   # services.xserver.libinput.enable = true;
 
   # Install zsh
@@ -176,6 +191,17 @@
     filelight
     mangohud
     xivlauncher
+  ];
+
+  fonts.packages = with pkgs; [
+    # (nerdfonts.override {
+    #   fonts = [
+    #     "FiraCode"
+    #     "DroidSansMono"
+    #   ];
+    # })
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

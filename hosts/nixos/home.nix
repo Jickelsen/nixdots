@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -19,7 +24,6 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
-
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -78,21 +82,4 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.vscode = {
-    enable = true;
-
-    extensions = with pkgs.vscode-extensions; [
-      # UX
-      vscodevim.vim
-      vspacecode.vspacecode
-      vspacecode.whichkey
-
-      # Look n feel
-      jdinhlife.gruvbox
-
-      # Languages
-      bbenoist.nix
-      brettm12345.nixfmt-vscode
-    ];
-  };
 }
