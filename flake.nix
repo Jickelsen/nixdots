@@ -15,9 +15,10 @@
     };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix";
+    ghostty.url = "github:ghostty-org/ghostty";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, zen-browser, catppuccin }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, zen-browser, catppuccin, ghostty }:
     let
     in
     {

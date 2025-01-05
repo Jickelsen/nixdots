@@ -29,7 +29,7 @@ in
       initialPassword = "12345";
       description = cfg.description;
       extraGroups = [ "networkmanager" "wheel" "uinput"];
-      #shell = pkgs.zsh;
+      shell = pkgs.zsh;
       packages = with pkgs; [
 	#  thunderbird
       ];
