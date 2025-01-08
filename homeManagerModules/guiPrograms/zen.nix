@@ -7,10 +7,10 @@
 }:
 
 let
-  cfg = config.programs.zen;
+  cfg = config.guiprograms.zen;
 in
 {
-  options.programs.zen.enable = lib.mkEnableOption "zen browser";
+  options.guiprograms.zen.enable = lib.mkEnableOption "zen browser";
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

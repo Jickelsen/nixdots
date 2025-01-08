@@ -7,14 +7,14 @@
 }:
 
 let
-  cfg = config.guiprograms.discord;
+  cfg = config.guiprograms.heroic;
 in
 {
-  options.guiprograms.discord.enable = lib.mkEnableOption "Discord";
+  options.guiprograms.heroic.enable = lib.mkEnableOption "Heroic";
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      discord
+      heroic
     ];
 
   };

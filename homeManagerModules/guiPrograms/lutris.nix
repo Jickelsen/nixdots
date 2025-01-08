@@ -7,14 +7,14 @@
 }:
 
 let
-  cfg = config.guiprograms.discord;
+  cfg = config.guiprograms.lutris;
 in
 {
-  options.guiprograms.discord.enable = lib.mkEnableOption "Discord";
+  options.guiprograms.lutris.enable = lib.mkEnableOption "Lutris";
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      discord
+      lutris
     ];
 
   };

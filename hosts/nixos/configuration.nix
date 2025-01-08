@@ -78,7 +78,7 @@
     modesetting.enable = true;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
   hardware.nvidia.prime = {
     offload = {
@@ -107,7 +107,7 @@
 
     };
 
-    no-gpu.configuration = {
+    no-prime.configuration = {
 
       hardware.nvidia = {
         prime.sync.enable = lib.mkForce false;

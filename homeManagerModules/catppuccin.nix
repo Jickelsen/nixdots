@@ -17,7 +17,7 @@ in
 
   config = lib.mkIf cfg.enable {
     catppuccin.flavor = "mocha";
-    catppuccin.enable = true;
+    # catppuccin.enable = true;
 
   };
 }

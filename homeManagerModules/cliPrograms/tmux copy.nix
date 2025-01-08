@@ -27,6 +27,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.tmux = {
       enable = true;
+      
 
       prefix = "C-a";
       terminal = "screen-256color";
@@ -36,10 +37,11 @@ in
       keyMode = "vi";
 
       plugins = with pkgs.tmuxPlugins; [
+        better-mouse-mode
         sensible
         yank
-        # resurrect
-        # continuum
+        resurrect
+        continuum
         tmux-thumbs
         tmux-fzf
         fzf-tmux-url
@@ -53,6 +55,8 @@ in
         ######################### ###############################################
         # TODO: Source an external reset file if you have one
         # source-file ~/.config/tmux/tmux.reset.conf
+
+        set -g mouse on
 
         ########################################################################
         # Install TPM and plugins
@@ -74,7 +78,7 @@ in
 
         ########################################################################
         # Don't exit from tmux when closing a session
-        # set -g detach-on-destroy off
+        set -g detach-on-destroy off
 
         #######################################################################
         # Renumber all windows when any window is closed
@@ -117,31 +121,38 @@ in
 
         ########################################################################
         # continuum/resurrect
-        # set -g @continuum-restore 'on'
-        # set -g @resurrect-strategy-nvim 'session'
+        set -g @continuum-restore 'on'
+        set -g @resurrect-strategy-nvim 'session'
 
         ########################################################################
         # catppuccin theme
-        # set -g @catppuccin_window_left_separator ""
-        # set -g @catppuccin_window_right_separator " "
-        # set -g @catppuccin_window_middle_separator " █"
-        # set -g @catppuccin_window_number_position "left"
+        #set -g @catppuccin_window_left_separator ""
+        #set -g @catppuccin_window_right_separator " "
+        #set -g @catppuccin_window_middle_separator " █"
+        # set -g @catppuccin_window_number_position "right"
+        # set -g @catppuccin_window_default_fill "number"
+        # set -g @catppuccin_window_default_text "#W"
+        # set -g @catppuccin_window_current_fill "number"
+        # set -g @catppuccin_window_current_text "#W#{?window_zoomed_flag,(),}"
+        # set -g @catppuccin_status_modules_right "directory date_time"
+        # set -g @catppuccin_status_modules_left "session"
+        # set -g @catppuccin_status_left_separator  " "
+        # set -g @catppuccin_status_right_separator " "
+        # set -g @catppuccin_status_right_separator_inverse "no"
+        # set -g @catppuccin_status_fill "icon"
+        # set -g @catppuccin_status_connect_separator "no"
+        # set -g @catppuccin_directory_text "#{b:pane_current_path}"
+        # set -g @catppuccin_date_time_text "%H:%M"
 
+        # Make the status line pretty and add some modules
+        set -g @catppuccin_flavor "mocha"
         set -g @catppuccin_window_status_style "slanted"
-
-        set -g @catppuccin_window_default_fill "number"
-        set -g @catppuccin_window_default_text "#W"
-        set -g @catppuccin_window_current_fill "number"
-        set -g @catppuccin_window_current_text "#W#{?window_zoomed_flag,(),}"
-        set -g @catppuccin_status_modules_right "directory date_time"
-        set -g @catppuccin_status_modules_left "session"
-        set -g @catppuccin_status_left_separator  " "
-        set -g @catppuccin_status_right_separator " "
-        set -g @catppuccin_status_right_separator_inverse "no"
-        set -g @catppuccin_status_fill "icon"
-        set -g @catppuccin_status_connect_separator "no"
-        set -g @catppuccin_directory_text "#{b:pane_current_path}"
-        set -g @catppuccin_date_time_text "%H:%M"
+        set -g status-right-length 100
+        set -g status-left-length 100
+        set -g status-left ""
+        set -g status-right "#{E:@catppuccin_status_application}"
+        set -ag status-right "#{E:@catppuccin_status_session}"
+        set -ag status-right "#{E:@catppuccin_status_uptime}"
 
       '';
     };

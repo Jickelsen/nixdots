@@ -7,14 +7,14 @@
 }:
 
 let
-  cfg = config.guiprograms.discord;
+  cfg = config.guiprograms.bottles;
 in
 {
-  options.guiprograms.discord.enable = lib.mkEnableOption "Discord";
+  options.guiprograms.bottles.enable = lib.mkEnableOption "Bottles";
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      discord
+      bottles
     ];
 
   };
