@@ -9,16 +9,18 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.5.2";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix";
     ghostty.url = "github:ghostty-org/ghostty";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, zen-browser, catppuccin, ghostty }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-master, home-manager, nix-flatpak, zen-browser, catppuccin, ghostty }:
     let
     in
     {
@@ -42,6 +44,11 @@
           ./hosts/nixos/configuration.nix
           home-manager.nixosModules.default
           ./modules
+          {
+            config.environment.systemPackages = [
+              nixpkgs-master.legacyPackages.x86_64-linux.pipewire
+            ];
+          }
         ];
       };
     };
