@@ -20,7 +20,18 @@
     ghostty.url = "github:ghostty-org/ghostty";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-master, home-manager, nix-flatpak, zen-browser, catppuccin, ghostty }:
+  outputs =
+    inputs@{
+      self,
+      nix-darwin,
+      nixpkgs,
+      nixpkgs-master,
+      home-manager,
+      nix-flatpak,
+      zen-browser,
+      catppuccin,
+      ghostty,
+    }:
     let
     in
     {
@@ -44,11 +55,6 @@
           ./hosts/nixos/configuration.nix
           home-manager.nixosModules.default
           ./modules
-          {
-            config.environment.systemPackages = [
-              nixpkgs-master.legacyPackages.x86_64-linux.pipewire
-            ];
-          }
         ];
       };
     };

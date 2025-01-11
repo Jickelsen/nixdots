@@ -1,10 +1,14 @@
-{ inputs, pkgs, config, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 
 {
-  imports =
-    [
-      ../common-packages.nix
-    ];
+  imports = [
+    ../common-packages.nix
+  ];
 
   services.nix-daemon.enable = true;
   # Necessary for using flakes on this system.

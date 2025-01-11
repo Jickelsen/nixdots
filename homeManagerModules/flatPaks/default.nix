@@ -17,7 +17,7 @@ in
 
   config = lib.mkIf cfg.enable {
     # services.flatpak.remotes = lib.mkOptionDefault [
-    #   
+    #
     #     name = "flathub-beta";
     #     location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
     #   }

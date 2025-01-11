@@ -29,6 +29,7 @@ in
         # Languages
         bbenoist.nix
         brettm12345.nixfmt-vscode
+        foxundermoon.shell-format
       ];
     };
 

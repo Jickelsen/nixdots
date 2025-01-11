@@ -159,7 +159,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  
+
   # services.xserver.libinput.enable = true;
 
   # Install zsh
@@ -192,6 +192,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # inputs.nixpkgs-master.legacyPackages.x86_64-linux.pipewire
     filelight
     mangohud
     xivlauncher
