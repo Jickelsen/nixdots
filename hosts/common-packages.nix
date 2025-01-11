@@ -7,6 +7,7 @@
     curl
     git
     htop
+    libnotify
     neofetch
     neovim
     nh
