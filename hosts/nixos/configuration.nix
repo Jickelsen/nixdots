@@ -16,6 +16,7 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
     ./main-user.nix
+    ./asus-intel-prime.nix
     ../common-packages.nix
   ];
 
@@ -46,6 +47,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  networking.firewall = rec {
+    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedUDPPortRanges = allowedTCPPortRanges;
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
 
@@ -64,60 +70,34 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
-  # From https://github.com/vimjoyer/nixos-gaming-video
-  # enabling opengpl and GPU drivers
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-  # hardware.opengl has beed changed to hardware.graphics
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-  # services.xserver.videoDrivers = ["amdgpu"];
-  hardware.nvidia = {
-    modesetting.enable = true;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
-  };
-  hardware.nvidia.prime = {
-    offload = {
-      enable = true;
-      enableOffloadCmd = true;
-    };
-
-    # integrated
-    intelBusId = "PCI:0:2:0";
-    # amdgpuBusId = "PCI:6:0:0"
-
-    # dedicated
-    nvidiaBusId = "PCI:1:0:0";
-  };
 
   specialisation = {
-    gaming-time.configuration = {
-
+    nvidia.configuration = {
+      services.xserver.videoDrivers = [ "nvidia" ];
       hardware.nvidia = {
-        prime.sync.enable = lib.mkForce true;
-        prime.offload = {
-          enable = lib.mkForce false;
-          enableOffloadCmd = lib.mkForce false;
-        };
+        modesetting.enable = true;
+        open = false;
+        nvidiaSettings = true;
+        package = config.boot.kernelPackages.nvidiaPackages.latest;
       };
-
     };
 
-    no-prime.configuration = {
-
-      hardware.nvidia = {
-        prime.sync.enable = lib.mkForce false;
-        prime.offload = {
-          enable = lib.mkForce false;
-          enableOffloadCmd = lib.mkForce false;
-        };
-      };
-
+    intel.configuration = {
+      services.xserver.videoDrivers = lib.mkForce [ ];
+      hardware.nvidia = lib.mkForce { };
     };
+
+    # gaming-time.configuration = {
+    #   hardware.nvidia = {
+    #     prime.sync.enable = lib.mkForce true;
+    #     prime.offload = {
+    #       enable = lib.mkForce false;
+    #       enableOffloadCmd = lib.mkForce false;
+    #     };
+    #   };
+
+    # };
+
   };
 
   # Enable the X11 windowing system.

@@ -30,6 +30,7 @@ in
       #"com.obsproject.Studio"
       #"im.riot.Riot"
       "org.kde.kasts"
+      "org.kde.partitionmanager"
     ];
   };
 }

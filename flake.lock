@@ -216,6 +216,26 @@
         "type": "github"
       }
     },
+    "klassy-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736740805,
+        "narHash": "sha256-z2d82dAMexmd4Ek3qlaQ2BR+FtcWrKX3xM3hC50loYI=",
+        "owner": "dshatz",
+        "repo": "klassy-nix",
+        "rev": "d481746da4e6e0de53778d5c18e12b59d6d4c3e7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dshatz",
+        "repo": "klassy-nix",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -392,6 +412,7 @@
         "catppuccin": "catppuccin",
         "ghostty": "ghostty",
         "home-manager": "home-manager_2",
+        "klassy-nix": "klassy-nix",
         "nix-darwin": "nix-darwin",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_2",

@@ -18,6 +18,10 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix";
     ghostty.url = "github:ghostty-org/ghostty";
+    klassy-nix = {
+      url = "github:dshatz/klassy-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -31,6 +35,7 @@
       zen-browser,
       catppuccin,
       ghostty,
+      klassy-nix,
     }:
     let
     in
