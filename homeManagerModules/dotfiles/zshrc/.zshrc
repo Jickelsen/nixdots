@@ -3,6 +3,18 @@
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
+# auto start tmux
+if [ "$TMUX" = "" ]; then
+	# check for old session
+	if [ "$(tmux ls | grep -v attached | wc -l)" -gt "0" ]; then
+	# attach to old session
+	tmux a -t "$(tmux ls | grep -v attached | cut -d ":" -f1 | head -n 1)"
+	else
+	# start new session - dont use exec so it's possible to run without tmux
+	tmux
+	fi
+fi
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -10,6 +22,7 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 alias la=tree
 alias cat=bat
+alias switch=/home/jickel/.config/nix/rebuild.sh
 
  # Nix
  if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then

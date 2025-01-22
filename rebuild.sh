@@ -7,9 +7,6 @@ set -e
 # cd to your config dir
 pushd ~/.config/nix
 
-# Make sure all nix files have been staged
-git add \*.nix
-
 # Early return if no changes were detected (thanks @singiamtel!)
 if git diff --quiet '*.nix'; then
   echo "No changes detected, exiting."
@@ -28,6 +25,8 @@ fi
 git diff -U0 '*.nix'
 
 echo "NixOS Rebuilding..."
+
+git add -A
 
 # Rebuild, output simplified errors, log trackebacks
 sudo nixos-rebuild switch --flake . &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)

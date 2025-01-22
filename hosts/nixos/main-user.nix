@@ -36,6 +36,7 @@ in
         "networkmanager"
         "wheel"
         "uinput"
+        "docker"
       ];
       shell = pkgs.zsh;
       packages = with pkgs; [

@@ -49,7 +49,6 @@ in
       ];
 
       extraConfig = ''
-
         ######################### ###############################################
         # TODO: Source an external reset file if you have one
         # source-file ~/.config/tmux/tmux.reset.conf

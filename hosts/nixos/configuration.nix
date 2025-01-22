@@ -70,11 +70,13 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
-
   specialisation = {
     nvidia.configuration = {
       services.xserver.videoDrivers = [ "nvidia" ];
+      # For Docker
+      hardware.nvidia-container-toolkit.enable = true;
       hardware.nvidia = {
+        powerManagement.enable = true;
         modesetting.enable = true;
         open = false;
         nvidiaSettings = true;

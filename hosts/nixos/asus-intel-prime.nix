@@ -13,11 +13,15 @@
     services.xserver.videoDrivers = [ "nvidia" ];
     # services.xserver.videoDrivers = ["amdgpu"];
     hardware.nvidia = {
+      powerManagement.enable = true;
       modesetting.enable = true;
       open = false;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
+
+    # For Docker
+    hardware.nvidia-container-toolkit.enable = true;
 
     hardware.nvidia.prime = {
       offload = {

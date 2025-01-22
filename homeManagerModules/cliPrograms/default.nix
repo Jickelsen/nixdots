@@ -9,6 +9,7 @@
 {
   home.packages = with pkgs; [
     #zsh
+    awscli
     p7zip
     bat
     fzf
