@@ -38,6 +38,7 @@ in
       plugins = with pkgs.tmuxPlugins; [
         sensible
         yank
+        better-mouse-mode
         # resurrect
         # continuum
         tmux-thumbs
@@ -70,6 +71,10 @@ in
         ########################################################################
         # Use system clipboard
         set -g set-clipboard on
+
+        ########################################################################
+        # Mouse mode
+        set-option -g mouse on
 
         ########################################################################
         # Don't exit from tmux when closing a session

@@ -48,8 +48,19 @@
   networking.networkmanager.enable = true;
 
   networking.firewall = rec {
-    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
     allowedUDPPortRanges = allowedTCPPortRanges;
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
   };
 
   # Set your time zone.
@@ -89,7 +100,7 @@
       hardware.nvidia = lib.mkForce { };
     };
 
-    # gaming-time.configuration = {
+    # vr-mode.configuration = {
     #   hardware.nvidia = {
     #     prime.sync.enable = lib.mkForce true;
     #     prime.offload = {
@@ -155,7 +166,6 @@
   # Steam etc
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
-
   programs.gamemode.enable = true;
 
   # Allow unfree packages
