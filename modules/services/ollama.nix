@@ -17,7 +17,7 @@ in
       enable = true;
       acceleration = "cuda";
       # Optional: load models on startup
-      loadModels = [ "deepseek-r1:14b" ];
+      # loadModels = [ "deepseek-r1:14b" ];
     };
     services.open-webui.enable = true;
   };

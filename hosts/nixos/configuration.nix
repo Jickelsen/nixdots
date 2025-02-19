@@ -219,6 +219,20 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall.allowedTCPPorts = [
+    # Sonos
+    1400
+  ];
+
+  # support SSDP https://serverfault.com/a/911286/9166
+  networking.firewall.extraPackages = [ pkgs.ipset ];
+  networking.firewall.extraCommands = ''
+    if ! ipset --quiet list upnp; then
+      ipset create upnp hash:ip,port timeout 3
+    fi
+    iptables -A OUTPUT -d 239.255.255.250/32 -p udp -m udp --dport 1900 -j SET --add-set upnp src,src --exist
+    iptables -A nixos-fw -p udp -m set --match-set upnp dst,dst -j nixos-fw-accept
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
