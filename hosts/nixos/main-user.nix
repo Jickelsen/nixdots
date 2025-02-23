@@ -37,6 +37,7 @@ in
         "wheel"
         "uinput"
         "docker"
+        "libvirtd"
       ];
       shell = pkgs.zsh;
       packages = with pkgs; [

@@ -8,7 +8,7 @@ set -e
 pushd ~/.config/nix
 
 # Early return if no changes were detected (thanks @singiamtel!)
-if git diff --quiet '*.nix'; then
+if git diff --cached --quiet '*.nix'; then
   echo "No changes detected, exiting."
   popd
   exit 0
@@ -25,6 +25,7 @@ fi
 git diff -U0 '*.nix'
 
 echo "NixOS Rebuilding..."
+
 
 git add -A
 

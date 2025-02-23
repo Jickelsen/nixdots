@@ -24,6 +24,7 @@
     ./guiPrograms/mailspring.nix
     ./guiPrograms/noson.nix
     ./guiPrograms/obsidian.nix
+    ./guiPrograms/orca-slicer.nix
     ./guiPrograms/pinokio.nix
     ./guiPrograms/protonup.nix
     ./guiPrograms/sublime-merge.nix
@@ -56,6 +57,7 @@
   guiprograms.mailspring.enable = lib.mkDefault true;
   guiprograms.noson.enable = lib.mkDefault true;
   guiprograms.obsidian.enable = lib.mkDefault true;
+  guiprograms.orca-slicer.enable = lib.mkDefault true;
   guiprograms.sublime-merge.enable = lib.mkDefault true;
   guiprograms.pinokio.enable = lib.mkDefault true;
   guiprograms.protonup.enable = lib.mkDefault true;
