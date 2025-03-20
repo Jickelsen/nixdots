@@ -185,7 +185,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # inputs.nixpkgs-master.legacyPackages.x86_64-linux.pipewire
-    filelight
+    kdePackages.filelight
     mangohud
     xivlauncher
   ];
