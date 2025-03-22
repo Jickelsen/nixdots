@@ -34,7 +34,6 @@
     ./guiPrograms/vivaldi.nix
     ./guiPrograms/vscode.nix
     ./guiPrograms/wine.nix
-    ./guiPrograms/yubico.nix
     ./guiPrograms/zen.nix
     ./kdeExtras
   ];
@@ -68,7 +67,6 @@
   guiprograms.vivaldi.enable = lib.mkDefault true;
   guiprograms.vscode.enable = lib.mkDefault true;
   guiprograms.wine.enable = lib.mkDefault true;
-  guiprograms.yubico.enable = lib.mkDefault true;
   guiprograms.zen.enable = lib.mkDefault true;
   kdeextras.enable = lib.mkDefault true;
 }
