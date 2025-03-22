@@ -197,6 +197,7 @@
     #     "DroidSansMono"
     #   ];
     # })
+    noto-fonts-emoji
     nerd-fonts.fira-code
     nerd-fonts.droid-sans-mono
   ];
