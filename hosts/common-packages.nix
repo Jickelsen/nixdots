@@ -7,6 +7,7 @@
     curl
     git
     htop
+    kubectl
     libnotify
     neofetch
     neovim
