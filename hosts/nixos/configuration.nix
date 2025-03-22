@@ -198,7 +198,7 @@
     #   ];
     # })
     noto-fonts
-    noto-fonts-color-emoji
+    noto-fonts-emoji
     nerd-fonts.fira-code
     nerd-fonts.droid-sans-mono
   ];
