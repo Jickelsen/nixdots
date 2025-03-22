@@ -190,18 +190,32 @@
     xivlauncher
   ];
 
-  fonts.packages = with pkgs; [
-    # (nerdfonts.override {
-    #   fonts = [
-    #     "FiraCode"
-    #     "DroidSansMono"
-    #   ];
-    # })
-    noto-fonts
-    noto-fonts-emoji
-    nerd-fonts.fira-code
-    nerd-fonts.droid-sans-mono
-  ];
+  # fonts.packages = with pkgs; [
+  #   # (nerdfonts.override {
+  #   #   fonts = [
+  #   #     "FiraCode"
+  #   #     "DroidSansMono"
+  #   #   ];
+  #   # })
+  #   # noto-fonts
+  #   # noto-fonts-emoji
+  #   # nerd-fonts.fira-code
+  #   # nerd-fonts.droid-sans-mono
+  # ];
+
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-emoji
+      nerd-fonts.fira-code
+      nerd-fonts.droid-sans-mono
+    ];
+    fontconfig = {
+      enable = true;
+      allowBitmaps = true;
+      useEmbeddedBitmaps = true;
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
