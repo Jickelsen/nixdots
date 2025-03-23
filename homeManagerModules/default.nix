@@ -36,6 +36,7 @@
     ./guiPrograms/wine.nix
     ./guiPrograms/zen.nix
     ./kdeExtras
+    ./plasmaConfig
   ];
 
   themes.catppuccin.enable = lib.mkDefault true;

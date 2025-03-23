@@ -16,7 +16,7 @@ in
     programs.vscode = {
       enable = true;
 
-      extensions = with pkgs.vscode-extensions; [
+      profiles.default.extensions = with pkgs.vscode-extensions; [
         # UX
         vscodevim.vim
         vspacecode.vspacecode
