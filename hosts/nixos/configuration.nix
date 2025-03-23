@@ -15,7 +15,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
-    ./main-user.nix
+    ../main-user.nix
     ./asus-intel-prime.nix
     ../common-packages.nix
   ];
@@ -55,6 +55,10 @@
       }
     ];
     allowedUDPPortRanges = allowedTCPPortRanges;
+    allowedTCPPorts = [
+      # Sonos
+      1400
+    ];
   };
 
   services.avahi = {
@@ -230,16 +234,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  networking.firewall.allowedTCPPorts = [
-    # Sonos
-    1400
-  ];
 
   # support SSDP https://serverfault.com/a/911286/9166
   networking.firewall.extraPackages = [ pkgs.ipset ];

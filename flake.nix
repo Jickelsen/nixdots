@@ -74,5 +74,14 @@
           ./modules
         ];
       };
+      nixosConfigurations."x230" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/x230/configuration.nix
+          home-manager.nixosModules.default
+          nur.modules.nixos.default
+          ./modules
+        ];
+      };
     };
 }

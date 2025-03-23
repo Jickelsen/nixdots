@@ -2,21 +2,37 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, inputs ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+    ../main-user.nix
+    ../common-packages.nix
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  main-user.enable = true;
+  main-user.userName = "jickel";
+  main-user.description = "Jacob M";
+
+  environment.sessionVariables = {
+    FLAKE = "/home/jickel/.config/nix";
+  };
+
+  networking.hostName = "x230"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -24,6 +40,27 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  networking.firewall = rec {
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPortRanges = allowedTCPPortRanges;
+    allowedTCPPorts = [
+      # Sonos
+      1400
+    ];
+  ];
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
@@ -60,6 +97,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true;
+
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -79,29 +119,53 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.jickel = {
-    isNormalUser = true;
-    description = "Jickel";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
-  };
+  # Install zsh
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  environment.shells = with pkgs; [ zsh ];
 
   # Install firefox.
   programs.firefox.enable = true;
 
+  # Steam etc
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  home-manager = {
+    # also pass inputs to home-manager modules
+    extraSpecialArgs = { inherit inputs; };
+    sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+    users = {
+      "jickel" = import ./home.nix;
+    };
+  };
+
+  services.flatpak.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    kdePackages.filelight
+    mangohud
   ];
+
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-emoji
+      nerd-fonts.fira-code
+      nerd-fonts.droid-sans-mono
+    ];
+    fontconfig = {
+      enable = true;
+      allowBitmaps = true;
+      useEmbeddedBitmaps = true;
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -116,11 +180,16 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+
+  # support SSDP https://serverfault.com/a/911286/9166
+  networking.firewall.extraPackages = [ pkgs.ipset ];
+  networking.firewall.extraCommands = ''
+    if ! ipset --quiet list upnp; then
+      ipset create upnp hash:ip,port timeout 3
+    fi
+    iptables -A OUTPUT -d 239.255.255.250/32 -p udp -m udp --dport 1900 -j SET --add-set upnp src,src --exist
+    iptables -A nixos-fw -p udp -m set --match-set upnp dst,dst -j nixos-fw-accept
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
