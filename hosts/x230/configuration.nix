@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, inputs ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports = [
@@ -53,7 +53,6 @@
       # Sonos
       1400
     ];
-  ];
   };
 
   services.avahi = {
@@ -101,7 +100,7 @@
   hardware.bluetooth.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
