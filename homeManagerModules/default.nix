@@ -13,6 +13,8 @@
     ./flatPaks
     ./guiPrograms/alvr.nix
     ./guiPrograms/arduino.nix
+    ./guiPrograms/bitwarden-desktop.nix
+    ./guiPrograms/blender.nix
     ./guiPrograms/bottles.nix
     ./guiPrograms/discord.nix
     ./guiPrograms/edge.nix
@@ -27,6 +29,7 @@
     ./guiPrograms/orca-slicer.nix
     ./guiPrograms/pinokio.nix
     ./guiPrograms/protonup.nix
+    ./guiPrograms/signal-desktop.nix
     ./guiPrograms/sublime-merge.nix
     ./guiPrograms/teams.nix
     ./guiPrograms/telegram.nix
@@ -37,6 +40,7 @@
     ./guiPrograms/zen.nix
     ./kdeExtras
     ./plasmaConfig
+    ./sops.nix
   ];
 
   themes.catppuccin.enable = lib.mkDefault true;
@@ -47,6 +51,8 @@
 
   guiprograms.alvr.enable = lib.mkDefault true;
   guiprograms.arduino.enable = lib.mkDefault true;
+  guiprograms.bitwarden-desktop.enable = lib.mkDefault true;
+  guiprograms.blender.enable = lib.mkDefault true;
   guiprograms.bottles.enable = lib.mkDefault true;
   guiprograms.discord.enable = lib.mkDefault true;
   guiprograms.edge.enable = lib.mkDefault true;
@@ -59,6 +65,7 @@
   guiprograms.noson.enable = lib.mkDefault true;
   guiprograms.obsidian.enable = lib.mkDefault true;
   guiprograms.orca-slicer.enable = lib.mkDefault true;
+  guiprograms.signal-desktop.enable = lib.mkDefault true;
   guiprograms.sublime-merge.enable = lib.mkDefault true;
   guiprograms.pinokio.enable = lib.mkDefault true;
   guiprograms.protonup.enable = lib.mkDefault true;

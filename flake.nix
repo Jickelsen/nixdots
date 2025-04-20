@@ -5,6 +5,11 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +44,8 @@
       nix-darwin,
       nixpkgs,
       nixpkgs-master,
+      nixos-hardware,
+      sops-nix,
       home-manager,
       nur,
       nix-flatpak,
@@ -77,6 +84,7 @@
       nixosConfigurations."x230" = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          nixos-hardware.nixosModules.lenovo-thinkpad-x230
           ./hosts/x230/configuration.nix
           home-manager.nixosModules.default
           nur.modules.nixos.default

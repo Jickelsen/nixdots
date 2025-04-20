@@ -15,13 +15,15 @@ if [ "$TMUX" = "" ]; then
 	fi
 fi
 
+export HELLO_TEST=$(cat ${config.sops.secrets.hello.path})
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
 # export EDITOR=/opt/homebrew/bin/nvim
 
 alias la=tree
-alias cat=bat
+#alias cat=bat
 alias switch=/home/jickel/.config/nix/rebuild.sh
 
  # Nix

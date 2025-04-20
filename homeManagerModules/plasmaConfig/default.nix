@@ -18,7 +18,7 @@
       "kmix"."increase_microphone_volume" = "Microphone Volume Up";
       "kmix"."increase_volume" = "Volume Up";
       "kmix"."increase_volume_small" = "Shift+Volume Up";
-      "kmix"."mic_mute" = ["Microphone Mute" "Meta+Volume Mute,Microphone Mute" "Meta+Volume Mute"];
+      "kmix"."mic_mute" = ["Microphone Mute" "Meta+Volume MuhomeManagerModules/guiPrograms/bottles.nixte,Microphone Mute" "Meta+Volume Mute"];
       "kmix"."mute" = "Volume Mute";
       "ksmserver"."Halt Without Confirmation" = "none";
       "ksmserver"."Lock Session" = ["Meta+Ctrl+Alt+L,Meta+L"];
@@ -445,7 +445,7 @@
       "kwinrulesrc"."30652fd1-872d-4963-85ff-1f83e37a2043"."wmclass" = "zen";
       "kwinrulesrc"."30652fd1-872d-4963-85ff-1f83e37a2043"."wmclassmatch" = 1;
       "kwinrulesrc"."39185921-e19e-4ac2-8c91-7be3115b4210"."Description" = "Fix app switcher icon";
-      "kwinrulesrc"."39185921-e19e-4ac2-8c91-7be3115b4210"."desktopfile" = "zen";
+      "kwinrulesrc"."39185921-e19e-4ac2-8c91-7be3115b4210"."desktopfile" = "zen-beta";
       "kwinrulesrc"."39185921-e19e-4ac2-8c91-7be3115b4210"."desktopfilerule" = 3;
       "kwinrulesrc"."39185921-e19e-4ac2-8c91-7be3115b4210"."title" = "Picture-in-Picture";
       "kwinrulesrc"."39185921-e19e-4ac2-8c91-7be3115b4210"."wmclass" = "zen-beta";
@@ -454,14 +454,14 @@
       "kwinrulesrc"."4e2d6e79-bac5-4069-83a4-9b08690f84d9"."desktops" = "071ae300-fc50-4fc7-a3f1-99ddfc646394";
       "kwinrulesrc"."4e2d6e79-bac5-4069-83a4-9b08690f84d9"."desktopsrule" = 3;
       "kwinrulesrc"."4e2d6e79-bac5-4069-83a4-9b08690f84d9"."screenrule" = 3;
-      "kwinrulesrc"."4e2d6e79-bac5-4069-83a4-9b08690f84d9"."wmclass" = "zen";
+      "kwinrulesrc"."4e2d6e79-bac5-4069-83a4-9b08690f84d9"."wmclass" = "zen-beta";
       "kwinrulesrc"."4e2d6e79-bac5-4069-83a4-9b08690f84d9"."wmclassmatch" = 1;
       "kwinrulesrc"."6628ae62-de4c-4438-90e4-859a0fdb59e7"."Description" = "Keep Zen PIP pinned";
       "kwinrulesrc"."6628ae62-de4c-4438-90e4-859a0fdb59e7"."desktops" = "\\0";
       "kwinrulesrc"."6628ae62-de4c-4438-90e4-859a0fdb59e7"."desktopsrule" = 3;
       "kwinrulesrc"."6628ae62-de4c-4438-90e4-859a0fdb59e7"."title" = "Picture-in-Picture";
       "kwinrulesrc"."6628ae62-de4c-4438-90e4-859a0fdb59e7"."titlematch" = 2;
-      "kwinrulesrc"."6628ae62-de4c-4438-90e4-859a0fdb59e7"."wmclass" = "zen";
+      "kwinrulesrc"."6628ae62-de4c-4438-90e4-859a0fdb59e7"."wmclass" = "zen-beta";
       "kwinrulesrc"."6628ae62-de4c-4438-90e4-859a0fdb59e7"."wmclassmatch" = 1;
       "kwinrulesrc"."6669a9f8-e7b8-4650-93c8-7935731ceca9"."Description" = "Settings for Ghostty";
       "kwinrulesrc"."6669a9f8-e7b8-4650-93c8-7935731ceca9"."desktops" = "650da140-d0dc-4878-95f5-d1539b7c971d";

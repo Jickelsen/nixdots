@@ -177,7 +177,8 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  #services.openssh.enable = true;
+  programs.ssh.startAgent = true;
 
 
   # support SSDP https://serverfault.com/a/911286/9166

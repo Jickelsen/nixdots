@@ -11,9 +11,12 @@
     #./input/keyboard.nix
     ./input/swerty.nix
     ./catppuccin.nix
+    ./sops.nix
     ./services/docker.nix
+    ./services/mullvad.nix
     ./services/ollama.nix
     ./services/syncthing.nix
+    ./services/tailscale.nix
     ./services/virt.nix
     ./services/yubikey.nix
   ];
@@ -23,8 +26,10 @@
   input.swerty.enable = lib.mkDefault true;
   themes.catppuccin.enable = lib.mkDefault true;
   services.docker.enable = lib.mkDefault true;
+  services.mullvad.enable = lib.mkDefault true;
   services.ollama-webui.enable = lib.mkDefault false;
   services.syncthing-client.enable = lib.mkDefault true;
+  services.tailscale-vpn.enable = lib.mkDefault true;
   services.virt.enable = lib.mkDefault true;
   services.yubikey.enable = lib.mkDefault true;
 
