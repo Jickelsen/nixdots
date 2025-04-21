@@ -1,7 +1,9 @@
 keys:
-  - &primary age17pna7j7astq0nyekg0wwrljhnjw0phsrn99h6dfz4hrstx4krv3qa250at
+  - &x230 age17pna7j7astq0nyekg0wwrljhnjw0phsrn99h6dfz4hrstx4krv3qa250at
+  - &nixos age1jy9wter6jfkxv0lsrja7yeca6n4y4t5rv5jrgtnjza35qp4ftv6sdcfc9x
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
     - age:
-      - *primary
+      - *x230
+      - *nixos
