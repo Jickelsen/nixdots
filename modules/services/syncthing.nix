@@ -32,8 +32,8 @@ in
         do
           device_id=$(cat "''${id_paths[$i]}")
           device_name="''${device_names[$i]}"
-          ${syncthing} cli config devices add --device-id "$device_id" --name "$device_name"
-        done
+          ${syncthing} cli config devices add --device-id "$device_id" --name "$device_name" --auto-accept-folders
+       done
       '';
     };
     services.syncthing = {
