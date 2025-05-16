@@ -28,6 +28,7 @@
     ./guiPrograms/obsidian.nix
     ./guiPrograms/orca-slicer.nix
     ./guiPrograms/pinokio.nix
+    ./guiPrograms/proton-suite.nix
     ./guiPrograms/protonup.nix
     ./guiPrograms/signal-desktop.nix
     ./guiPrograms/sublime-merge.nix
@@ -68,6 +69,7 @@
   guiprograms.signal-desktop.enable = lib.mkDefault true;
   guiprograms.sublime-merge.enable = lib.mkDefault true;
   guiprograms.pinokio.enable = lib.mkDefault true;
+  guiprograms.proton-suite.enable = lib.mkDefault true;
   guiprograms.protonup.enable = lib.mkDefault true;
   guiprograms.teams.enable = lib.mkDefault true;
   guiprograms.telegram.enable = lib.mkDefault true;
