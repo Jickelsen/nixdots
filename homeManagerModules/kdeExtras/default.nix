@@ -26,7 +26,7 @@ in
       # inputs.klassy-nix.packages."${pkgs.system}".default
       audacious
       inputs.nur.legacyPackages."${pkgs.system}".repos.shadowrz.klassy-qt6
-      qmmp
+      #qmmp
       kdePackages.krdp
     ];
   };
