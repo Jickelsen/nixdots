@@ -23,7 +23,7 @@
   main-user.description = "Jacob M";
 
   environment.sessionVariables = {
-    FLAKE = "/home/jickel/.config/nix";
+    NH_FLAKE = "/home/jickel/.config/nix";
   };
 
   networking.hostName = "x230"; # Define your hostname.

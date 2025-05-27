@@ -26,6 +26,7 @@
 
   environment.sessionVariables = {
     FLAKE = "/home/jickel/.config/nix";
+    NH_FLAKE = "/home/jickel/.config/nix";
   };
 
   # Bootloader.

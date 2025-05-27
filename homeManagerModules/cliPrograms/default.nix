@@ -33,7 +33,7 @@
   };
   programs.zsh = {
     enable = true;
-    initExtra = ''
+    initContent = ''
       # Heavily inspired by https://github.com/omerxx/dotfiles/blob/a2bbe85838bfa265f8624cb3f6d5977ee2cecbf1/nix-darwin/home.nix
 
       eval "$(starship init zsh)"
