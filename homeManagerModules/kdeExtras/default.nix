@@ -21,7 +21,7 @@ in
 
   config = lib.mkIf cfg.enable {
     kdeextras.krohnkite.enable = lib.mkDefault true;
-    kdeextras.kdeconnect.enable = lib.mkDefault true;
+    kdeextras.kdeconnect.enable = lib.mkDefault false;
     home.packages = with pkgs; [
       # inputs.klassy-nix.packages."${pkgs.system}".default
       audacious

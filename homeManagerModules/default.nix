@@ -40,7 +40,7 @@
     ./guiPrograms/wine.nix
     ./guiPrograms/zen.nix
     ./kdeExtras
-    ./plasmaConfig
+    #./plasmaConfig
     ./sops.nix
   ];
 
