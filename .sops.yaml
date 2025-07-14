@@ -1,9 +1,11 @@
 keys:
+  - &cryzer age1j4yg55rdjf9d6f4ahx9ga0t6pfccped7u070kxsly8htku9rjcus5u28n4
   - &x230 age17pna7j7astq0nyekg0wwrljhnjw0phsrn99h6dfz4hrstx4krv3qa250at
   - &nixos age1jy9wter6jfkxv0lsrja7yeca6n4y4t5rv5jrgtnjza35qp4ftv6sdcfc9x
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
     - age:
+      - *cryzer
       - *x230
       - *nixos

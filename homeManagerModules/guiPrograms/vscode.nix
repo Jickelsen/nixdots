@@ -18,17 +18,16 @@ in
 
       profiles.default.extensions = with pkgs.vscode-extensions; [
         # UX
-        vscodevim.vim
-        vspacecode.vspacecode
-        vspacecode.whichkey
+        # vscodevim.vim
+        # vspacecode.vspacecode
+        # Installing above manually as vspacecode includes a bunch of other plugins, which won't get installed if we define here
 
         # Look n feel
         # jdinhlife.gruvbox
         catppuccin.catppuccin-vsc
 
         # Languages
-        bbenoist.nix
-        brettm12345.nixfmt-vscode
+        jnoortheen.nix-ide
         foxundermoon.shell-format
       ];
     };

@@ -23,7 +23,7 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.5.1";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix";
     ghostty.url = "github:ghostty-org/ghostty";
@@ -76,6 +76,15 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/nixos/configuration.nix
+          home-manager.nixosModules.default
+          nur.modules.nixos.default
+          ./modules
+        ];
+      };
+      nixosConfigurations."cryzer" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/cryzer/configuration.nix
           home-manager.nixosModules.default
           nur.modules.nixos.default
           ./modules

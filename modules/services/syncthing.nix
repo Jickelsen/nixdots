@@ -67,13 +67,13 @@ in
             # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
             # ignorePerms = false;
           };
-          "Obsidian-Jickel" = {
-            path = "/home/jickel/Obsidian/Jickel";
-            label = "Obsidian-Jickel";
-            devices = [ "nixos" "JickMBP16" "Synology-DS918" "Jickelphone" ];
-            # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
-            # ignorePerms = false;
-          };
+          # "Obsidian-Jickel" = {
+          #   path = "/home/jickel/Obsidian/Jickel";
+          #   label = "Obsidian-Jickel";
+          #   devices = [ "nixos" "JickMBP16" "Synology-DS918" "Jickelphone" ];
+          #   # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
+          #   # ignorePerms = false;
+          # };
         };
       };
     };
