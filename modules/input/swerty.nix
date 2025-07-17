@@ -10,15 +10,22 @@
 
 let
   cfg = config.input.swerty;
+  newKanata = pkgs.kanata.overrideAttrs (old: {
+    mkService.DeviceAllow = [
+      "/dev/uinput rw"
+      "char-input rw"
+    ];
+  });
 in
 {
   options.input.swerty.enable = lib.mkEnableOption "Swerty";
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      kanata
+     kanata
     ];
     services.kanata = {
+      package = newKanata;
       enable = true;
       keyboards = {
         "swerty".config = ''
@@ -27,6 +34,16 @@ in
           ;;  ö   39
           ;;  ä   40
           ;;)
+          (deftemplate text-paste (text)
+            (macro
+              (clipboard-save 0)
+              20
+              (clipboard-set $text)
+              100
+              C-v
+              (clipboard-restore 0)
+            )
+          )
           (defsrc
             grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
             tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
@@ -37,16 +54,16 @@ in
 
           (deflayer default
             grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-            tab  q    w    e    r    t    y    u    i    o    p    (unicode å)    ]    \
-            @cap a    s    d    f    g    h    j    k    l    (unicode ö)    (unicode ä)     ret
+            tab  q    w    e    r    t    y    u    i    o    p    @aa    ]    \
+            @cap a    s    d    f    g    h    j    k    l    @oo    @aaa     ret
             @lsft @lsft z    x    c    v    b    n    m    ,    .    /    @rsft
             lctl lmet lalt           spc            @ralt rmet rctl
           )
 
           (deflayer swedishUpper
             grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-            tab  q    w    e    r    t    y    u    i    o    p    (unicode Å)    ]    \
-            @cap a    s    d    f    g    h    j    k    l    (unicode Ö)    (unicode Ä)     ret
+            tab  q    w    e    r    t    y    u    i    o    p    @AA    ]    \
+            @cap a    s    d    f    g    h    j    k    l    @OO    @AAA     ret
             lsft lsft z    x    c    v    b    n    m    ,    .    /    @rsft
             lctl lmet lalt           spc            @ralt rmet rctl
           )
@@ -71,6 +88,13 @@ in
 
             ;; in swedish layer: toggle back to american symbols + shift with right shift (: for vim save etc)
             rsft (multi rsft (layer-toggle americanSymbols))
+
+            aa (t! text-paste "T")
+            aaa (t! text-paste "ä")
+            oo (t! text-paste "ö")
+            AA (t! text-paste "Å")
+            AAA (t! text-paste "Ä")
+            OO (t! text-paste "Ö")
           )
         '';
       };

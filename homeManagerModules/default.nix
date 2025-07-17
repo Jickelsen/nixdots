@@ -40,7 +40,7 @@
     ./guiPrograms/wine.nix
     ./guiPrograms/zen.nix
     ./kdeExtras
-    ./plasmaConfig
+    #./plasmaConfig
     ./sops.nix
   ];
 
@@ -56,7 +56,7 @@
   guiprograms.blender.enable = lib.mkDefault true;
   guiprograms.bottles.enable = lib.mkDefault true;
   guiprograms.discord.enable = lib.mkDefault true;
-  guiprograms.edge.enable = lib.mkDefault true;
+  guiprograms.edge.enable = lib.mkDefault false;
   guiprograms.ghostty.enable = lib.mkDefault true;
   guiprograms.godot.enable = lib.mkDefault true;
   guiprograms.heroic.enable = lib.mkDefault true;
