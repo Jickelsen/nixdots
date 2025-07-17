@@ -16,6 +16,7 @@
     ./services/coolercontrol.nix
     ./services/devbox.nix
     ./services/docker.nix
+    ./services/monado-vr.nix
     ./services/mullvad.nix
     ./services/ollama.nix
     ./services/syncthing.nix
@@ -32,6 +33,7 @@
   services.coolercontrol.enable = lib.mkDefault true;
   services.devbox.enable = lib.mkDefault true;
   services.docker.enable = lib.mkDefault true;
+  services.monado-vr.enable = lib.mkDefault false;
   services.mullvad.enable = lib.mkDefault true;
   services.ollama-webui.enable = lib.mkDefault false;
   services.syncthing-client.enable = lib.mkDefault true;

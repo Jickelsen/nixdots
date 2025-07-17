@@ -12,6 +12,8 @@
     ../common-packages.nix
     ];
 
+  services.monado-vr.enable = lib.mkForce true;
+
   main-user.enable = true;
   main-user.userName = "jickel";
   main-user.description = "Jacob Michelsen";
@@ -28,6 +30,17 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "it87" "k10temp" ];
+  boot.kernelPatches = [
+  {
+    name = "amdgpu-ignore-ctx-privileges";
+    patch = pkgs.fetchpatch {
+      name = "cap_sys_nice_begone.patch";
+      url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
+      hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
+    };
+  }
+];
+
 
   networking.hostName = "cryzer";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -154,6 +167,10 @@
   };
 
   services.flatpak.enable = true;
+
+  # Android and ALVR
+  programs.adb.enable = true;
+  users.users.jickel.extraGroups = ["adbusers"];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
