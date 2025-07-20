@@ -39,6 +39,7 @@
     ./guiPrograms/vscode.nix
     ./guiPrograms/wine.nix
     ./guiPrograms/zen.nix
+    ./services/opencomposite.nix 
     ./kdeExtras
     #./plasmaConfig
     ./sops.nix
@@ -50,7 +51,7 @@
 
   flatpaks.common.enable = lib.mkDefault true;
 
-  guiprograms.alvr.enable = lib.mkDefault true;
+  guiprograms.alvr.enable = lib.mkDefault false;
   guiprograms.arduino.enable = lib.mkDefault true;
   guiprograms.bitwarden-desktop.enable = lib.mkDefault true;
   guiprograms.blender.enable = lib.mkDefault true;
@@ -78,5 +79,6 @@
   guiprograms.vscode.enable = lib.mkDefault true;
   guiprograms.wine.enable = lib.mkDefault true;
   guiprograms.zen.enable = lib.mkDefault true;
+  services.opencomposite.enable = lib.mkDefault false;
   kdeextras.enable = lib.mkDefault true;
 }

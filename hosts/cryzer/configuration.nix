@@ -12,7 +12,7 @@
     ../common-packages.nix
     ];
 
-  services.monado-vr.enable = lib.mkForce true;
+  services.monado-vr.enable = lib.mkForce false;
 
   main-user.enable = true;
   main-user.userName = "jickel";
@@ -122,6 +122,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true;
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -156,6 +159,7 @@
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
+  hardware.steam-hardware.enable = true;
 
   home-manager = {
     # also pass inputs to home-manager modules
