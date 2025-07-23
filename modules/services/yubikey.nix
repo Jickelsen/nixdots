@@ -15,7 +15,7 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      yubioath-flutter
+      inputs.nixpkgs-2505.legacyPackages.${pkgs.system}.yubioath-flutter
     ];
     services.udev.packages = [ pkgs.yubikey-personalization ];
     services.pcscd.enable = true;
