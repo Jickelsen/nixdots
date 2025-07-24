@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -10,6 +11,8 @@
     ../../homeManagerModules
   ];
 
+  guiprograms.alvr.enable = lib.mkForce false;
+  services.opencomposite.enable = lib.mkForce false;
   nixpkgs.config.allowUnfree = true;
   # Home Manager needs a bit of information about you and the paths it should
   # manage.

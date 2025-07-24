@@ -35,9 +35,11 @@ in
       extraGroups = [
         "networkmanager"
         "wheel"
+        "input"
         "uinput"
         "docker"
         "libvirtd"
+        "ydotool"
       ];
       shell = pkgs.zsh;
       packages = with pkgs; [

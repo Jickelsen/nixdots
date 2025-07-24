@@ -15,6 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
+    nixpkgs-2505.url = "github:NixOS/nixpkgs/25.05";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +45,7 @@
       nix-darwin,
       nixpkgs,
       nixpkgs-master,
+      nixpkgs-2505,
       nixos-hardware,
       sops-nix,
       home-manager,
