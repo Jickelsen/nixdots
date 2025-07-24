@@ -180,6 +180,10 @@
   #services.openssh.enable = true;
   programs.ssh.startAgent = true;
 
+  hardware.opengl = {
+    enable = true;
+    extraPackages = [ pkgs.mesa.drivers ];
+  };
 
   # support SSDP https://serverfault.com/a/911286/9166
   networking.firewall.extraPackages = [ pkgs.ipset ];
