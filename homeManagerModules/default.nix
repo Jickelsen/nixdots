@@ -27,6 +27,7 @@
     ./guiPrograms/noson.nix
     ./guiPrograms/obsidian.nix
     ./guiPrograms/orca-slicer.nix
+    ./guiPrograms/gsf-tools.nix
     ./guiPrograms/pinokio.nix
     ./guiPrograms/proton-suite.nix
     ./guiPrograms/protonup.nix
@@ -69,6 +70,7 @@
   guiprograms.orca-slicer.enable = lib.mkDefault true;
   guiprograms.signal-desktop.enable = lib.mkDefault true;
   guiprograms.sublime-merge.enable = lib.mkDefault true;
+  guiprograms.gsf-tools.enable = lib.mkDefault true;
   guiprograms.pinokio.enable = lib.mkDefault true;
   guiprograms.proton-suite.enable = lib.mkDefault true;
   guiprograms.protonup.enable = lib.mkDefault true;

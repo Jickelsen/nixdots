@@ -180,9 +180,9 @@
   #services.openssh.enable = true;
   programs.ssh.startAgent = true;
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    extraPackages = [ pkgs.mesa.drivers ];
+    extraPackages = [ pkgs.intel-vaapi-driver ];
   };
 
   # support SSDP https://serverfault.com/a/911286/9166
