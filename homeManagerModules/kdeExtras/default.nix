@@ -21,12 +21,13 @@ in
 
   config = lib.mkIf cfg.enable {
     kdeextras.krohnkite.enable = lib.mkDefault true;
-    kdeextras.kdeconnect.enable = lib.mkDefault false;
+    kdeextras.kdeconnect.enable = lib.mkDefault true;
     home.packages = with pkgs; [
       # inputs.klassy-nix.packages."${pkgs.system}".default
       audacious
       inputs.nur.legacyPackages."${pkgs.system}".repos.shadowrz.klassy-qt6
       #qmmp
+      haruna
       kdePackages.krdp
     ];
   };
