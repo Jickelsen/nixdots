@@ -12,7 +12,8 @@
     ../common-packages.nix
     ];
 
-  services.monado-vr.enable = lib.mkForce false;
+  programs.nix-ld.enable = true;
+  services.monado-vr.enable = lib.mkForce true;
 
   main-user.enable = true;
   main-user.userName = "jickel";
@@ -159,7 +160,6 @@
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
-  hardware.steam-hardware.enable = true;
 
   home-manager = {
     # also pass inputs to home-manager modules

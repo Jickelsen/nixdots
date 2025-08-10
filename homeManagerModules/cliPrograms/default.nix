@@ -39,17 +39,19 @@
       eval "$(starship init zsh)"
       export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
+      eval "$(zellij setup --generate-auto-start zsh)"
+
       # auto start tmux
-      if [ "$TMUX" = "" ]; then
-        # check for old session
-        if [ "$(tmux ls | grep -v attached | wc -l)" -gt "0" ]; then
-        # attach to old sessio#n
-        tmux a -t "$(tmux ls | grep -v attached | cut -d ":" -f1 | head -n 1)"
-        else
-        # start new session - dont use exec so it's possible to run without tmux
-        tmux
-        fi
-      fi
+      # if [ "$TMUX" = "" ]; then
+      #   # check for old session
+      #   if [ "$(tmux ls | grep -v attached | wc -l)" -gt "0" ]; then
+      #   # attach to old sessio#n
+      #   tmux a -t "$(tmux ls | grep -v attached | cut -d ":" -f1 | head -n 1)"
+      #   else
+      #   # start new session - dont use exec so it's possible to run without tmux
+      #   tmux
+      #   fi
+      # fi
 
       export HELLO_TEST=$(cat ${config.sops.secrets.hello.path})
 

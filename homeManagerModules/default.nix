@@ -10,6 +10,7 @@
     ./catppuccin.nix
     ./cliPrograms
     ./cliPrograms/tmux.nix
+    ./cliPrograms/zellij.nix
     ./flatPaks
     ./guiPrograms/alvr.nix
     ./guiPrograms/arduino.nix
@@ -50,7 +51,8 @@
 
   themes.catppuccin.enable = lib.mkDefault true;
 
-  cliprograms.tmux.enable = lib.mkDefault true;
+  cliprograms.tmux.enable = lib.mkDefault false;
+  cliprograms.zellij.enable = lib.mkDefault true;
 
   flatpaks.common.enable = lib.mkDefault true;
 
