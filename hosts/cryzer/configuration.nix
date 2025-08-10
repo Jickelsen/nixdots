@@ -12,6 +12,7 @@
     ../common-packages.nix
     ];
 
+  programs.nix-ld.enable = true;
   services.monado-vr.enable = lib.mkForce true;
 
   main-user.enable = true;
