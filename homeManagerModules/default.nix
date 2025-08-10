@@ -26,11 +26,13 @@
     ./guiPrograms/mailspring.nix
     ./guiPrograms/noson.nix
     ./guiPrograms/obsidian.nix
+    ./guiPrograms/openscad.nix
     ./guiPrograms/orca-slicer.nix
     ./guiPrograms/gsf-tools.nix
     ./guiPrograms/pinokio.nix
     ./guiPrograms/proton-suite.nix
     ./guiPrograms/protonup.nix
+    ./guiPrograms/prusa-slicer.nix
     ./guiPrograms/signal-desktop.nix
     ./guiPrograms/sublime-merge.nix
     ./guiPrograms/teams.nix
@@ -67,7 +69,9 @@
   guiprograms.mailspring.enable = lib.mkDefault true;
   guiprograms.noson.enable = lib.mkDefault true;
   guiprograms.obsidian.enable = lib.mkDefault true;
+  guiprograms.openscad.enable = lib.mkDefault true;
   guiprograms.orca-slicer.enable = lib.mkDefault true;
+  guiprograms.prusa-slicer.enable = lib.mkDefault true;
   guiprograms.signal-desktop.enable = lib.mkDefault true;
   guiprograms.sublime-merge.enable = lib.mkDefault true;
   guiprograms.gsf-tools.enable = lib.mkDefault true;

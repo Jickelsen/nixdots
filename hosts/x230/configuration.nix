@@ -180,10 +180,10 @@
   #services.openssh.enable = true;
   programs.ssh.startAgent = true;
 
-  hardware.graphics = {
-    enable = true;
-    extraPackages = [ pkgs.intel-vaapi-driver ];
-  };
+  #hardware.graphics = {
+  #  enable = true;
+  #  extraPackages = [ pkgs.intel-vaapi-driver ];
+  #};
 
   # support SSDP https://serverfault.com/a/911286/9166
   networking.firewall.extraPackages = [ pkgs.ipset ];

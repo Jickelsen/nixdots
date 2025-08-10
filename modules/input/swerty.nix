@@ -5,52 +5,28 @@
   ...
 }:
 
-# Adapted from this amazing post by u/_MrOrange
+# Adapted rom this amazing post by u/_MrOrange
 # https://www.reddit.com/r/sweden/comments/1fs2oe2/knacka_kod_p%C3%A5_svenska_tangenbord_suger_ibland_men/
 
 let
   cfg = config.input.swerty;
 in
 {
-  imports = [
-    ./kanata-clip.nix
-  ];
   options.input.swerty.enable = lib.mkEnableOption "Swerty";
 
   config = lib.mkIf cfg.enable {
-    #environment.systemPackages = with pkgs; [
-    #  kanata
-    #];
-    #environment.systemPackages = with pkgs; [
-    #  kanata
-    #];
+    environment.systemPackages = with pkgs; [
+      kanata
+    ];
     services.kanata = {
       enable = true;
-      package = pkgs.kanata-with-cmd;
       keyboards = {
-        "swerty".extraDefCfg = ''
-          process-unmapped-keys yes
-          danger-enable-cmd yes
-        '';
         "swerty".config = ''
           ;;(deflocalkeys-linux
           ;;  å   26
           ;;  ö   39
           ;;  ä   40
           ;;)
-          (deftemplate text-paste (text)
-            (macro
-              ;;(clipboard-save 0)
-              ;;20
-              ;;(cmd wl-copy -f $text)
-              ;;20
-              (cmd sh -c 'wl-paste')
-              ;;(clipboard-set $text)
-              ;;100
-              ;;C-v
-              ;;(clipboard-restore 0)
-            )
-          )
           (defsrc
             grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
             tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
@@ -61,16 +37,16 @@ in
 
           (deflayer default
             grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-            tab  q    w    e    r    t    y    u    i    o    p    @aa    ]    \
-            @cap a    s    d    f    g    h    j    k    l    @oo    @aaa     ret
+            tab  q    w    e    r    t    y    u    i    o    p    (unicode å)    ]    \
+            @cap a    s    d    f    g    h    j    k    l    (unicode ö)    (unicode ä)     ret
             @lsft @lsft z    x    c    v    b    n    m    ,    .    /    @rsft
             lctl lmet lalt           spc            @ralt rmet rctl
           )
 
           (deflayer swedishUpper
             grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-            tab  q    w    e    r    t    y    u    i    o    p    @AA    ]    \
-            @cap a    s    d    f    g    h    j    k    l    @OO    @AAA     ret
+            tab  q    w    e    r    t    y    u    i    o    p    (unicode Å)    ]    \
+            @cap a    s    d    f    g    h    j    k    l    (unicode Ö)    (unicode Ä)     ret
             lsft lsft z    x    c    v    b    n    m    ,    .    /    @rsft
             lctl lmet lalt           spc            @ralt rmet rctl
           )
@@ -82,6 +58,7 @@ in
             lsft lsft z    x    c    v    b    n    m    ,    .    /    rsft
             lctl lmet lalt           spc            @ralt rmet rctl
           )
+
           (defalias
             ;; make caps-lock useful: tap for escape, hold for left ctrl
             cap (tap-hold-press 200 200 esc (multi lctl lsft lalt lmet))
@@ -94,23 +71,6 @@ in
 
             ;; in swedish layer: toggle back to american symbols + shift with right shift (: for vim save etc)
             rsft (multi rsft (layer-toggle americanSymbols))
-
-            
-            ;;aa (cmd wtype T)
-            ;;aaa (cmd wtype ä)
-            ;;oo (cmd wtype ö)
-            ;;AA (cmd wtype Å)
-            ;;AAA (cmd wtype Ä)
-            ;;OO (cmd wtype Ö)
-
-            aa (t! text-paste "T")
-            aaa (t! text-paste "ä")
-            oo (t! text-paste "ö")
-            AA (t! text-paste "Å")
-            AAA (t! text-paste "Ä")
-            OO (t! text-paste "Ö")
-
-            fa (cmd sh -c 'setxkbmap -layout "ir"')
           )
         '';
       };
