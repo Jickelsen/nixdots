@@ -30,7 +30,7 @@ in
       haruna
       kdePackages.krdp
       kde-rounded-corners
-      kdenlive
+      kdePackages.kdenlive
     ];
   };
 }

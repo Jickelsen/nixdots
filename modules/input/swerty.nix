@@ -21,7 +21,7 @@ in
     '';
  
   users.groups.uinput = { }; # Ensure `uinput` group exists
-  systemd.services.kanata-swertyz.serviceConfig = {
+  systemd.services.kanata-swerty.serviceConfig = {
     SupplementaryGroups = [ "input" "uinput" ];
   }; # Add kanata service user to necessary groups
 
@@ -31,10 +31,6 @@ in
     keyboards = {
       "swerty".config = ''
 ;; Swerty (ANSI, Swedish OS layout)
-
-(defcfg
-  process-unmapped-keys yes
-)
 
 ;; ANSI US physical layout
 (defsrc
