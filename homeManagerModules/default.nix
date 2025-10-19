@@ -12,7 +12,6 @@
     ./cliPrograms/tmux.nix
     ./cliPrograms/zellij.nix
     ./flatPaks
-    ./guiPrograms/alvr.nix
     ./guiPrograms/arduino.nix
     ./guiPrograms/bitwarden-desktop.nix
     ./guiPrograms/blender.nix
@@ -53,7 +52,6 @@
 
   flatpaks.common.enable = lib.mkDefault true;
 
-  guiprograms.alvr.enable = lib.mkDefault true;
   guiprograms.arduino.enable = lib.mkDefault true;
   guiprograms.bitwarden-desktop.enable = lib.mkDefault true;
   guiprograms.blender.enable = lib.mkDefault true;

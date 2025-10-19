@@ -28,6 +28,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    # users.groups.uinput = {}; 
     users.users.${cfg.userName} = {
       isNormalUser = true;
       initialPassword = "12345";

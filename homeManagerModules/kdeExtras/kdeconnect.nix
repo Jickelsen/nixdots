@@ -14,6 +14,9 @@ in
 
   config = lib.mkIf cfg.enable {
     services.kdeconnect.enable = true;
+    # home.packages = with pkgs; [
+    #   krfb
+    # ];
 
   };
 }

@@ -7,13 +7,16 @@
 
 {
   imports = [
+    ./cliPrograms/vrc-get.nix
     ./guiPrograms/gparted.nix
     ./guiPrograms/rustdesk.nix
+    ./guiPrograms/unityhub.nix
     ./guiPrograms/wireguard.nix
     #./input/keyboard.nix
     ./input/swerty.nix
     ./catppuccin.nix
     ./sops.nix
+    ./services/alvr.nix
     ./services/coolercontrol.nix
     ./services/devbox.nix
     ./services/docker.nix
@@ -28,11 +31,14 @@
   ];
 
   # keyboard.enable = lib.mkDefault true;
+  cliprograms.vrc-get.enable = lib.mkDefault true;
   guiprograms.gparted.enable = lib.mkDefault true;
   guiprograms.rustdesk.enable = lib.mkDefault true;
+  guiprograms.unityhub.enable = lib.mkDefault true;
   guiprograms.wireguard.enable = lib.mkDefault true;
   input.swerty.enable = lib.mkDefault true;
   themes.catppuccin.enable = lib.mkDefault true;
+  services.alvr.enable = lib.mkDefault true;
   services.coolercontrol.enable = lib.mkDefault true;
   services.devbox.enable = lib.mkDefault true;
   services.docker.enable = lib.mkDefault true;

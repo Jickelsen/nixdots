@@ -29,6 +29,8 @@ in
       #qmmp
       haruna
       kdePackages.krdp
+      kde-rounded-corners
+      kdenlive
     ];
   };
 }

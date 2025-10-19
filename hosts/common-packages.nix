@@ -5,6 +5,7 @@
 
   environment.systemPackages = with pkgs; [
     curl
+    ffmpeg
     htop
     kubectl
     libnotify

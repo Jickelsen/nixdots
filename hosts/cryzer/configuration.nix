@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, cfg, inputs, ... }:
 
 {
   imports = [ 
@@ -30,18 +30,26 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelModules = [ "it87" "k10temp" ];
+  boot.kernelModules = [ "it87" "k10temp" "msr"];
   boot.kernelPatches = [
-  {
-    name = "amdgpu-ignore-ctx-privileges";
-    patch = pkgs.fetchpatch {
-      name = "cap_sys_nice_begone.patch";
-      url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
-      hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
-    };
-  }
-];
+    {
+      name = "amdgpu-ignore-ctx-privileges";
+      patch = pkgs.fetchpatch {
+        name = "cap_sys_nice_begone.patch";
+        url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
+        hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
+      };
+    }
+  ];
 
+  systemd.services.zenstates-c6 = {
+    description = "Disable Ryzen Package C6 at boot";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ''/run/current-system/sw/bin/zenstates --c6-disable'';
+    };
+  };
 
   networking.hostName = "cryzer";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -141,6 +149,18 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+  # Fix for audio cutting out when GPU is under load
+  # https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Troubleshooting#stuttering-audio-in-virtual-machine
+  # services.pipewire.wireplumber.extraConfig."99-vive"."monitor.alsa.rules" = lib.singleton {
+  #   matches = lib.singleton {
+  #     "node.name" = "${cfg.audio.sink}";
+  #   };
+  #   actions.update-props = {
+  #     # This adds latency so set to minimum value that fixes problem
+  #     "api.alsa.period-size" = 1024;
+  #     "api.alsa.headroom" = 8192;
+  #   };
+  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -183,6 +203,7 @@
     mangohud
     xivlauncher
     lact
+    zenstates
   ];
 
   fonts = {
@@ -239,6 +260,13 @@
       echo "We disabled XHC0" | tee /dev/kmsg
     else
       echo "We did not disable XHC0" | tee /dev/kmsg
+    fi
+
+    if (grep "PTXH.*enabled" /proc/acpi/wakeup >/dev/null); then
+      echo PTXH | tee /proc/acpi/wakeup
+      echo "We disabled PTXH" | tee /dev/kmsg
+    else
+      echo "We did not disable PTXH" | tee /dev/kmsg
     fi
 
     sleep 1
