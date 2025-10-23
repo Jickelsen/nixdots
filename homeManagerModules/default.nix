@@ -9,6 +9,7 @@
   imports = [
     ./catppuccin.nix
     ./cliPrograms
+    ./cliPrograms/claude-code.nix
     ./cliPrograms/tmux.nix
     ./cliPrograms/zellij.nix
     ./flatPaks
@@ -16,6 +17,7 @@
     ./guiPrograms/bitwarden-desktop.nix
     ./guiPrograms/blender.nix
     ./guiPrograms/bottles.nix
+    ./guiPrograms/cursor.nix
     ./guiPrograms/discord.nix
     ./guiPrograms/edge.nix
     ./guiPrograms/ghostty.nix
@@ -47,6 +49,7 @@
 
   themes.catppuccin.enable = lib.mkDefault true;
 
+  cliprograms.claude-code.enable = lib.mkDefault true;
   cliprograms.tmux.enable = lib.mkDefault false;
   cliprograms.zellij.enable = lib.mkDefault true;
 
@@ -56,6 +59,7 @@
   guiprograms.bitwarden-desktop.enable = lib.mkDefault true;
   guiprograms.blender.enable = lib.mkDefault true;
   guiprograms.bottles.enable = lib.mkDefault true;
+  guiprograms.cursor.enable = lib.mkDefault true;
   guiprograms.discord.enable = lib.mkDefault true;
   guiprograms.edge.enable = lib.mkDefault true;
   guiprograms.ghostty.enable = lib.mkDefault true;
