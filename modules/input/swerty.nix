@@ -62,7 +62,7 @@ in
 (defalias us_asterisk S-\)      ;; *
 (defalias us_lpar     S-8)      ;; (
 (defalias us_rpar     S-9)      ;; )
-(defalias us_underscore S-/)    ;; _
+(defalias us_underscore (multi (release-key lsft) S-/))    ;; _
 (defalias us_plus     (multi (release-key lsft) -))      ;; +
 
 ;; US punctuation with Shift:
@@ -95,10 +95,10 @@ in
 
 ;; ANSI US layout when holding lmeta/super for hyprland shortcuts etc
 (deflayer usSuper
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  @us_grave  1    2    3    4    5    6    7    8    9    0    @us_dash    @us_equals    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    @us_rbr    @us_bslash
+  @cap a    s    d    f    g    h    j    k    l    ;    '    ret
+  (multi lsft (layer-while-held usShift)) z    x    c    v    b    n    m    ,    .    @us_slash    (multi lsft (layer-while-held usShift))
   lctl lmet lalt                spc                ralt rmet rctl
 )
 
