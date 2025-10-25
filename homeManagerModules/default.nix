@@ -7,11 +7,11 @@
 
 {
   imports = [
-    ./catppuccin.nix
-    ./cliPrograms
     ./cliPrograms/claude-code.nix
+    ./cliPrograms/nvim.nix
     ./cliPrograms/tmux.nix
     ./cliPrograms/zellij.nix
+    ./cliPrograms/zsh.nix
     ./flatPaks
     ./guiPrograms/arduino.nix
     ./guiPrograms/bitwarden-desktop.nix
@@ -43,15 +43,26 @@
     ./guiPrograms/wine.nix
     ./guiPrograms/zen.nix
     ./kdeExtras
-    #./plasmaConfig
     ./sops.nix
+    ./styles/catppuccin.nix
   ];
 
-  themes.catppuccin.enable = lib.mkDefault true;
+  home.packages = with pkgs; [
+    awscli
+    p7zip
+    bat
+    fzf
+    ranger
+    starship
+    tree
+    unzip
+  ];
 
   cliprograms.claude-code.enable = lib.mkDefault true;
+  cliprograms.nvim.enable = lib.mkDefault true;
   cliprograms.tmux.enable = lib.mkDefault false;
   cliprograms.zellij.enable = lib.mkDefault true;
+  cliprograms.zsh.enable = lib.mkDefault true;
 
   flatpaks.common.enable = lib.mkDefault true;
 
@@ -85,4 +96,5 @@
   guiprograms.wine.enable = lib.mkDefault true;
   guiprograms.zen.enable = lib.mkDefault true;
   kdeextras.enable = lib.mkDefault true;
+  themes.catppuccin.enable = lib.mkDefault false;
 }

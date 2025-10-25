@@ -183,6 +183,7 @@
     users = {
       "jickel" = import ./home.nix;
     };
+    backupFileExtension = "hm.OLD.$(date +%Y%m%d)";
   };
 
   services.flatpak.enable = true;

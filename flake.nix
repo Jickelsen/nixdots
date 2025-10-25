@@ -24,6 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.5.1";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix";
     #ghostty.url = "github:ghostty-org/ghostty";
@@ -49,6 +53,7 @@
       home-manager,
       nur,
       nix-flatpak,
+      stylix,
       zen-browser,
       catppuccin,
       #ghostty,
@@ -76,7 +81,6 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/nixos/configuration.nix
-          home-manager.nixosModules.default
           nur.modules.nixos.default
           ./modules
         ];
@@ -85,7 +89,6 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/cryzer/configuration.nix
-          home-manager.nixosModules.default
           nur.modules.nixos.default
           ./modules
         ];
@@ -95,7 +98,6 @@
         modules = [
           nixos-hardware.nixosModules.lenovo-thinkpad-x230
           ./hosts/x230/configuration.nix
-          home-manager.nixosModules.default
           nur.modules.nixos.default
           ./modules
         ];

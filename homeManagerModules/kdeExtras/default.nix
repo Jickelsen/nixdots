@@ -14,6 +14,7 @@ in
   imports = [
     ./krohnkite.nix
     ./kdeconnect.nix
+    ./plasmaConfig
   ];
 
 
@@ -22,6 +23,7 @@ in
   config = lib.mkIf cfg.enable {
     kdeextras.krohnkite.enable = lib.mkDefault true;
     kdeextras.kdeconnect.enable = lib.mkDefault true;
+    kdeextras.plasmaConfig.enable = lib.mkDefault false;
     home.packages = with pkgs; [
       # inputs.klassy-nix.packages."${pkgs.system}".default
       audacious

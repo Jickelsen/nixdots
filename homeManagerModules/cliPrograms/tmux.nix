@@ -44,7 +44,7 @@ in
         tmux-thumbs
         tmux-fzf
         fzf-tmux-url
-        catppuccin
+        # catppuccin
         tmux-floax
         # tmux-sessionx
       ];
