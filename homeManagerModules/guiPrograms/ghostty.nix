@@ -14,7 +14,6 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      #inputs.ghostty.packages."${pkgs.system}".default
       ghostty
     ];
 

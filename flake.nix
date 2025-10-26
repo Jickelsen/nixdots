@@ -4,6 +4,7 @@
   description = "Jickels system configuration";
 
   inputs = {
+    self.submodules = true;
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     sops-nix = {
@@ -28,9 +29,13 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixcats-nvim = {
+      url = "git+file:///home/jickel/.config/nix/homeManagerModules/cliPrograms/nixcats-nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+      flake = true;
+    };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     catppuccin.url = "github:catppuccin/nix";
-    #ghostty.url = "github:ghostty-org/ghostty";
     klassy-nix = {
       url = "github:dshatz/klassy-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,11 +57,11 @@
       sops-nix,
       home-manager,
       nur,
+      nixcats-nvim,
       nix-flatpak,
       stylix,
       zen-browser,
       catppuccin,
-      #ghostty,
       klassy-nix,
       plasma-manager,
     }:

@@ -8,11 +8,12 @@
 {
   imports = [
     ./cliPrograms/claude-code.nix
-    ./cliPrograms/nvim.nix
+    ./cliPrograms/nixcats-nvim.nix
     ./cliPrograms/tmux.nix
     ./cliPrograms/zellij.nix
     ./cliPrograms/zsh.nix
     ./flatPaks
+    ./guiPrograms/alacritty.nix
     ./guiPrograms/arduino.nix
     ./guiPrograms/bitwarden-desktop.nix
     ./guiPrograms/blender.nix
@@ -53,19 +54,21 @@
     bat
     fzf
     ranger
+    ripgrep
     starship
     tree
     unzip
   ];
 
   cliprograms.claude-code.enable = lib.mkDefault true;
-  cliprograms.nvim.enable = lib.mkDefault true;
+  cliprograms.nixcats-nvim.enable = lib.mkDefault true;
   cliprograms.tmux.enable = lib.mkDefault false;
   cliprograms.zellij.enable = lib.mkDefault true;
   cliprograms.zsh.enable = lib.mkDefault true;
 
   flatpaks.common.enable = lib.mkDefault true;
 
+  guiprograms.alacritty.enable = lib.mkDefault true;
   guiprograms.arduino.enable = lib.mkDefault true;
   guiprograms.bitwarden-desktop.enable = lib.mkDefault true;
   guiprograms.blender.enable = lib.mkDefault true;

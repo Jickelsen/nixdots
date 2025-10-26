@@ -274,6 +274,42 @@
         "type": "github"
       }
     },
+    "nixCats": {
+      "locked": {
+        "lastModified": 1759730516,
+        "narHash": "sha256-AzHKcP3v/CXnjXWqC18zB9uJ33Qe9gZBFFLXkNvK3WY=",
+        "owner": "BirdeeHub",
+        "repo": "nixCats-nvim",
+        "rev": "c7be94d69a52b3b11e76e1ef82db88a2222144c6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BirdeeHub",
+        "repo": "nixCats-nvim",
+        "type": "github"
+      }
+    },
+    "nixcats-nvim": {
+      "inputs": {
+        "nixCats": "nixCats",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1761504045,
+        "narHash": "sha256-G52IuwWTMdyCrkA7fUIzuEDL34YxgpmGWfA8+Kj39Ao=",
+        "ref": "refs/heads/main",
+        "rev": "dc861d16370eff59dea332b1c1d3950efd6bc326",
+        "revCount": 1,
+        "type": "git",
+        "url": "file:///home/jickel/.config/nix/homeManagerModules/cliPrograms/nixcats-nvim"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/jickel/.config/nix/homeManagerModules/cliPrograms/nixcats-nvim"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1760958188,
@@ -430,6 +466,7 @@
         "klassy-nix": "klassy-nix",
         "nix-darwin": "nix-darwin",
         "nix-flatpak": "nix-flatpak",
+        "nixcats-nvim": "nixcats-nvim",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-master": "nixpkgs-master",

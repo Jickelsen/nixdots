@@ -1,0 +1,3 @@
+[submodule "nixcats-nvim-lazy"]
+	path = homeManagerModules/cliPrograms/nixcats-nvim
+	url = git@github.com:Jickelsen/nixcats-nvim-lazy.git
