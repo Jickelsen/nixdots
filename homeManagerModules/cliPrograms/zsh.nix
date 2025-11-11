@@ -27,7 +27,7 @@ in
         eval "$(starship init zsh)"
         export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
-        eval "$(zellij setup --generate-auto-start zsh)"
+        # eval "$(zellij setup --generate-auto-start zsh)"
 
         # auto start tmux
         # if [ "$TMUX" = "" ]; then
