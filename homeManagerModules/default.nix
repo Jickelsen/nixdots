@@ -34,6 +34,7 @@
     ./guiPrograms/pinokio.nix
     ./guiPrograms/proton-suite.nix
     ./guiPrograms/protonup.nix
+    ./guiPrograms/qbittorrent.nix
     ./guiPrograms/signal-desktop.nix
     ./guiPrograms/sublime-merge.nix
     ./guiPrograms/teams.nix
@@ -91,6 +92,7 @@
   guiprograms.pinokio.enable = lib.mkDefault true;
   guiprograms.proton-suite.enable = lib.mkDefault true;
   guiprograms.protonup.enable = lib.mkDefault true;
+  guiprograms.qbittorrent.enable = lib.mkDefault true;
   guiprograms.teams.enable = lib.mkDefault true;
   guiprograms.telegram.enable = lib.mkDefault true;
   guiprograms.thunderbird.enable = lib.mkDefault true;

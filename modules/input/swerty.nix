@@ -29,7 +29,9 @@ in
   services.kanata = {
     enable = true;
     keyboards = {
-      "swerty".config = ''
+      "swerty" = {
+        port = 6666;
+        config = ''
 ;; Swerty (ANSI, Swedish OS layout)
 
 ;; ANSI US physical layout
@@ -82,6 +84,14 @@ in
 
 ;; make caps-lock useful: tap for escape, hold for hyper (all modifiers)
 (defalias cap (tap-hold-press 200 200 esc (multi lctl lsft lalt lmet)))
+
+(defseq lay-sw-us (, .))
+(deffakekeys lay-sw-us (layer-switch usBase))
+(defseq lay-sw-se (. ,))
+(deffakekeys lay-sw-se (layer-switch base))
+(defalias als (tap-hold 200 200 sldr ralt))
+(defalias rsftl (tap-hold-release 200 200 sldr rsft))
+
 ;; ---------- Layers ----------
 
 ;; Base: pass-through + overrides;
@@ -89,9 +99,18 @@ in
   @us_grave  1    2    3    4    5    6    7    8    9    0    @us_dash    @us_equals    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [   @us_rbr  @us_bslash
   @cap a    s    d    f    g    h    j    k    l    ;    '    ret
-  (multi lsft (layer-while-held usShift)) z  x    c    v    b    n    m    ,    .   @us_slash  (multi lsft (layer-while-held usShift))
+  (multi lsft (layer-while-held usShift)) z  x    c    v    b    n    m    ,    .   @us_slash  @rsftl
   lctl (multi lmet (layer-while-held usSuper)) lalt                spc         (layer-while-held us)        rmet rctl
 )
+
+(deflayer usBase
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    @rsftl
+  lctl lmet lalt                spc                ralt rmet rctl
+)
+
 
 ;; ANSI US layout when holding lmeta/super for hyprland shortcuts etc
 (deflayer usSuper
@@ -135,9 +154,10 @@ in
   tab  q       w     e       r         t          y        u      i           o       p       [               @us_rbrace            @us_pipe
   @cap a       s     d       f         g          h        j      k           l       ;         '           ret
   lsft z       x     c       v         b          n        m      @us_lt        @us_gt    @us_qmark     rsft
-  lctl (multi lmet (layer-while-held usSuper)) lalt                            spc                              (layer-while-held usS) rmet rctl
+  lctl lmet lalt                            spc                              (layer-while-held usS) rmet rctl
 )
         '';
+      };
       };
     };
   };
