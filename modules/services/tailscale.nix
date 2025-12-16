@@ -17,5 +17,10 @@ in
 
   config = lib.mkIf cfg.enable {
     services.tailscale.enable = true;
+    # services.tailscale.port = 12345;
+    # networking.firewall.allowedUDPPorts = [ ${services.tailscale.port} ];
+    environment.systemPackages = with pkgs; [ tailscale ];
   };
+
+
 }
