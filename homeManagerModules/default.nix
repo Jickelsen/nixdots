@@ -58,6 +58,7 @@
     ripgrep
     starship
     tree
+    unrar
     unzip
   ];
 
