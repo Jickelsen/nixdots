@@ -1,8 +1,8 @@
 format = """
 [](#9A348E)\
     $os\
-    $username\
     $hostname\
+    $container\
     [](bg:#DA627D fg:#9A348E)\
     $directory\
     [](fg:#DA627D bg:#FCA17D)\
@@ -71,6 +71,11 @@ format = """
     format = '[@$hostname]($style)'
     trim_at = '.local'
     disabled = false
+
+    [container]
+    symbol = "📦 "
+    style = "bg:#9A348E"
+    format = '[$symbol$name]($style)'
 
     [c]
     symbol = " "

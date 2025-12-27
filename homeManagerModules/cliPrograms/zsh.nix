@@ -21,6 +21,7 @@ in
     };
     programs.zsh = {
       enable = true;
+      completionInit = "autoload -U compinit && compinit -u";
       initContent = ''
         # Heavily inspired by https://github.com/omerxx/dotfiles/blob/a2bbe85838bfa265f8624cb3f6d5977ee2cecbf1/nix-darwin/home.nix
 
@@ -41,7 +42,7 @@ in
         #   fi
         # fi
 
-        export HELLO_TEST=$(cat ${config.sops.secrets.hello.path})
+        export HELLO_TEST="$(cat ${config.sops.secrets.hello.path})"
 
         # You may need to manually set your language environment
         # export LANG=en_US.UTF-8

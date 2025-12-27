@@ -49,6 +49,10 @@
     ./styles/catppuccin.nix
   ];
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
   home.packages = with pkgs; [
     awscli
     p7zip
@@ -63,7 +67,7 @@
   ];
 
   cliprograms.claude-code.enable = lib.mkDefault true;
-  cliprograms.nixcats-nvim.enable = lib.mkDefault true;
+  cliprograms.nixcats-nvim.enable = lib.mkDefault false;
   cliprograms.tmux.enable = lib.mkDefault false;
   cliprograms.zellij.enable = lib.mkDefault true;
   cliprograms.zsh.enable = lib.mkDefault true;

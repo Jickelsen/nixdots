@@ -19,6 +19,7 @@
     ./services/alvr.nix
     ./services/coolercontrol.nix
     ./services/devbox.nix
+    ./services/distrobox.nix
     ./services/docker.nix
     ./services/monado-vr.nix
     ./services/mullvad.nix
@@ -41,6 +42,7 @@
   services.alvr.enable = lib.mkDefault true;
   services.coolercontrol.enable = lib.mkDefault true;
   services.devbox.enable = lib.mkDefault true;
+  services.distrobox.enable = lib.mkDefault true;
   services.docker.enable = lib.mkDefault true;
   services.monado-vr.enable = lib.mkDefault false;
   services.mullvad.enable = lib.mkDefault true;

@@ -13,7 +13,6 @@ in
   options.services.devbox.enable = lib.mkEnableOption "Devbox";
 
   config = lib.mkIf cfg.enable {
-
     environment.systemPackages = with pkgs; [
       devbox
     ];

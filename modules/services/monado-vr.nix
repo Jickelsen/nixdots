@@ -5,9 +5,6 @@
   ...
 }:
 
-# From https://www.youtube.com/watch?v=GH3kpsbbERo
-# converted using o1
-
 let
   cfg = config.services.monado-vr;
 in
