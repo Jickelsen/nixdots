@@ -16,7 +16,6 @@ in
     home.packages = with pkgs; [
       proton-pass
       protonvpn-gui
-      protonvpn-cli 
       protonmail-desktop
       protonmail-bridge-gui
       
