@@ -58,6 +58,7 @@
     p7zip
     bat
     fzf
+    lazygit
     ranger
     ripgrep
     starship
