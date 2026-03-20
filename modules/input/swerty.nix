@@ -12,7 +12,7 @@ in
   options.input.swerty.enable = lib.mkEnableOption "Swerty";
 
   config = lib.mkIf cfg.enable {
-    console.keyMap = "sv-latin1"; 
+    # console.keyMap = "sv-latin1"; 
     hardware.uinput.enable = true;
   # Set up `udev` rules for `uinput`
     boot.kernelModules = [ "uinput" ];

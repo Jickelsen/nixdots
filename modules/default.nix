@@ -12,12 +12,15 @@
     ./guiPrograms/rustdesk.nix
     ./guiPrograms/unityhub.nix
     ./guiPrograms/wireguard.nix
+    ./input/caps-kanata.nix
     ./input/swerty.nix
+    ./input/swerty-layout.nix
     ./styling/catppuccin.nix
     ./styling/stylix.nix
     ./sops.nix
     ./services/alvr.nix
     ./services/coolercontrol.nix
+    ./services/deskflow.nix
     ./services/devbox.nix
     ./services/distrobox.nix
     ./services/docker.nix
@@ -28,19 +31,32 @@
     ./services/syncthing.nix
     ./services/tailscale.nix
     ./services/virt.nix
+    ./services/wivrn.nix
     ./services/yubikey.nix
   ];
+
+  # Then set the layout for your setup:
+  
+  # For X11:
+  #services.xserver.xkb.layout = "se";
+  #services.xserver.xkb.variant = "swerty";
+  
+  # For console (TTY):
+  console.keyMap = "us";
 
   cliprograms.vrc-get.enable = lib.mkDefault true;
   guiprograms.gparted.enable = lib.mkDefault true;
   guiprograms.rustdesk.enable = lib.mkDefault true;
   guiprograms.unityhub.enable = lib.mkDefault true;
   guiprograms.wireguard.enable = lib.mkDefault true;
-  input.swerty.enable = lib.mkDefault true;
+  input.caps.enable = lib.mkDefault true;
+  input.swerty-layout.enable = lib.mkDefault true;
+  input.swerty.enable = lib.mkDefault false;
   themes.catppuccin.enable = lib.mkDefault false;
   styling.stylix.enable = lib.mkDefault true;
   services.alvr.enable = lib.mkDefault true;
   services.coolercontrol.enable = lib.mkDefault true;
+  services.deskflow.enable = lib.mkDefault true;
   services.devbox.enable = lib.mkDefault true;
   services.distrobox.enable = lib.mkDefault true;
   services.docker.enable = lib.mkDefault true;
@@ -51,6 +67,7 @@
   services.syncthing-client.enable = lib.mkDefault true;
   services.tailscale-vpn.enable = lib.mkDefault true;
   services.virt.enable = lib.mkDefault true;
+  services-vr.wivrn.enable = lib.mkDefault true;
   services.yubikey.enable = lib.mkDefault true;
 
 }

@@ -13,7 +13,7 @@
     ];
 
   programs.nix-ld.enable = true;
-  services.monado-vr.enable = lib.mkForce true;
+  services.monado-vr.enable = lib.mkForce false;
 
   main-user.enable = true;
   main-user.userName = "jickel";
@@ -27,10 +27,12 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.memtest86.enable = true;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "it87" "k10temp" "msr"];
+  boot.kernelParams = [ "amd_pstate=passive" ];
   boot.kernelPatches = [
     {
       name = "amdgpu-ignore-ctx-privileges";
@@ -77,6 +79,8 @@
     allowedTCPPorts = [
       # Sonos
       1400
+      # Deskflow
+      24800
     ];
   };
 
@@ -124,8 +128,7 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    layout = "swerty";
   };
 
   # Enable CUPS to print documents.
@@ -194,7 +197,6 @@
   services.flatpak.enable = true;
 
   # Android and ALVR
-  programs.adb.enable = true;
   users.users.jickel.extraGroups = ["adbusers"];
 
   # List packages installed in system profile. To search, run:
@@ -205,7 +207,11 @@
     xivlauncher
     lact
     zenstates
+    android-tools
+    openrgb
   ];
+
+  services.hardware.openrgb.enable = true;
 
   fonts = {
     packages = with pkgs; [

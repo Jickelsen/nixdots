@@ -18,5 +18,6 @@ in
   config = lib.mkIf cfg.enable {
     stylix.enable = true;
     stylix.image = ../../homeManagerModules/styles/current-wallpaper.jpg;
+    stylix.polarity = "dark";
   };
 }

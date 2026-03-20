@@ -13,6 +13,13 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
+
+  # Try to fix some wifi errors
+  boot.extraModprobeConfig = ''
+    options rtw89_pci disable_aspm=1
+    options rtw89_core disable_ps_mode=1
+  '';
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/c9618a51-cd75-414c-a60e-3cf66efadec8";
       fsType = "ext4";
